@@ -1,0 +1,563 @@
+https://nodejs.org/en/download
+
+https://create-react-app.dev/docs/getting-started
+
+npm install create-react-app
+
+npx create-react-app react-app-v1
+
+npx create-react-app react_ui
+
+npm install 
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  let [msg, setMsg]=useState('');
+  let[product,setProduct] =useState('');
+  const display=(str)=>{
+    console.log(str)
+    if(str === 'morning'){
+      setMsg('Welcome Harry,Good Morning')
+      console.log('in morning if')
+    }
+    else{
+      setMsg('welcome harry,Good Evening')
+      console.log('in evening else')
+    }
+  }
+
+  const displayProduct =(category)=>{
+    if(category ==='mobile')
+    setProduct('Apple Iphone 13,Oppo A17')
+  else
+    setProduct('Hp envy,Mackbook Air')
+  
+  }
+  return (
+    <div className="App">
+     <h1>My First React App </h1>
+     <div className="content">{msg}</div>
+     <br/>
+     <div>
+      <button onClick={()=>display("morning")}>Wish Goodmorning</button>
+      &nbsp;&nbsp;
+      <button onClick={()=>display("evening")}>Wish Good Evening</button>
+     </div>
+     <hr />
+     <div>
+      <p>What do what to buy</p>
+      <button onClick={()=>displayProduct("mobile")}>Apple Iphone 1,Oppo A17</button>
+      &nbsp;&nbsp;
+      <button onClick={()=>displayProduct("laptop")}>Hp envy,Mackbook Air</button>
+    
+     </div>
+     <br />
+     <div className="content">{product}</div>
+    
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+app.js
+=================
+
+import './App.css';
+
+function App() {
+  let [msg, setMsg] = useState("");
+  let [product, setProduct] = useState("");
+
+  const display = (str) => {
+    console.log(str);
+    if (str === "morning") {
+      setMsg("welcome harry,good morning");
+      console.log("in morning if");
+    } else {
+      setMsg("welcome harry,good evening");
+      console.log("in morning else");
+    }
+  };
+
+  const displayProduct = (category) => {
+    if (category === "mobile") setProduct("apple Iphone,Oppo A17");
+    else setProduct("HP,Macbook");
+  };
+  return (
+    <div className="App">
+      <h1>My first react app </h1>
+
+      <div className="content">{msg}</div>
+
+      <br />
+
+      <div>
+        <button onClick={() => display("morning")}>Wish Morning</button>
+        &nbsp;&nbsp;
+        <button onClick={() => display("evening")}>Wish Evening</button>
+      </div>
+
+      <hr />
+      <div>
+        <p>what do you want to buy?</p>
+        <button onClick={() => displayProduct("mobile")}>Mobile</button>
+        &nbsp;&nbsp;
+        <button onClick={() => displayProduct("laptop")}>Laptop</button>
+      </div>
+
+      <hr />
+      <br />
+
+      <div className='"content'> {product}</div>
+    </div>
+  );
+}
+
+export default App;
+
+
+ let [arry, setArry]=useState([5,3,8,2,9,1,7]);
+    const sortArry=(direction)=>{
+        if(direction === 'ASC'){
+            let temp =arry;
+            setArry(temp.sort((a,b)=> a-b))
+        }
+        else{
+            let temp =arry;
+            setArry(temp.sort((a,b)=> b-a))
+        }
+    
+    <br/><br />
+    <button onClick={()=>sortArry('ASC')}>Sort ASC</button>
+    &nbsp;&nbsp;
+    <button onClick={()=>sortArry('ASC')}>sort DESC</button>
+  =========================================
+
+
+import React, { useState } from "react";
+
+function MyArray() {
+  const [arry,setArry] = useState([5, 3, 8, 2, 9, 1, 7]);
+
+  const sortArry=(direction)=>{
+    if(direction==='ASC'){
+       let temp =  arry.sort((a,b)=>a-b)
+       setArry([...temp])
+    }
+    else{
+        let temp = arry.sort((a,b)=>b-a)
+        setArry([...temp])
+    }
+}
+
+  return (
+    <div>
+      <h5>My Array</h5>
+      {arry.map((e, index) => (
+        <span key={index} className="arry">
+          {e}
+        </span>
+      ))}
+      <br/>
+      <br/>
+      <button onClick={()=>sortArry('ASC')} >Sort ASC</button>
+      &nbsp;&nbsp;
+      <button onClick={()=>sortArry('DESC')} >Sort DESC</button>
+    </div>
+  );
+}
+
+import React, { useState } from "react";
+
+function MyArray() {
+  const [arry,setArry] = useState([5, 3, 8, 2, 9, 1, 7]);
+
+  const sortArry=(direction)=>{
+    if(direction==='ASC'){
+       let temp =  arry.sort((a,b)=>a-b)
+       setArry([...temp])
+    }
+    else{
+        let temp = arry.sort((a,b)=>b-a)
+        setArry([...temp])
+    }
+}
+
+  return (
+    <div>
+      <h5>My Array</h5>
+      {arry.map((e, index) => (
+        <span key={index} className="arry">
+          {e}
+        </span>
+      ))}
+      <br/>
+      <br/>
+      <button onClick={()=>sortArry('ASC')} >Sort ASC</button>
+      &nbsp;&nbsp;
+      <button onClick={()=>sortArry('DESC')} >Sort DESC</button>
+    </div>
+  );
+}
+
+let temp = employee.sort((a,b)=>b-a);
+
+
+
+
+
+
+after removing value={name} , text is visible sir
+
+
+
+https://techskillsit.web.app/
+
+
+
+import './App.css';
+import MyArray from './component/MyArray';
+//import MyClick from './component/MyClick';
+
+function App() {
+  
+
+  return (
+    <div>{/*<MyClick/>*/}
+    <MyArray/>
+    </div>
+  );
+}
+
+export default App;
+
+
+import { useState } from "react";
+
+function ReadingInput(){
+    let [name,setName] = useState('');
+
+    const process=()=>{
+        console.log(name);
+    }
+
+    const changeHandler =(event)=>{
+        console.log(event);
+    }
+    return(
+        <div>
+            <h3>Reading input from User: </h3>
+
+            <div>
+                <label>Please enter your name: </label>
+                <input type="text"  onChange={(e)=>changeHandler(e.target.value) }/>
+                <br />
+                <button onClick={()=>process()}>Submit</button>
+            </div>
+        </div>
+    )
+}
+
+export default ReadingInput;
+
+
+
+
+
+part1 -[a-zA-Z0-9_ -],part2+@[a-zA-Z0-9_-],part3 \.[a-zA-Z]+ )
+
+
+
+import { useState } from "react";
+
+function ReadingInput(){
+    let [name,setName] = useState('');
+    let [email,setEmail] = useState('');
+    let [password,setPassword] = useState('');
+
+    let [nameMsg,setNameMsg] = useState('');
+    let [emailMsg,setEmailMsg] = useState('');
+    let [passwordMsg,setPasswordMsg] = useState('');
+    
+    const process=()=>{ 
+        console.log(name + '--' + email + '--' + password);
+        let user={
+            'name': name,
+            'email': email,
+            'password': password
+        }
+        let status = validate(user);
+
+        if(status === true){
+            console.log('sign up success, call API ')
+        }
+        else{
+            console.log('sign up unsuccessful, wait ')
+        }
+    }
+
+    const validate = (user)=>{
+        if(user.name === ''){
+            setNameMsg('name is required')
+            return false
+        }else{
+            setNameMsg('')
+        }
+
+        if(user.email === ''){
+            setEmailMsg('email is required')
+            return false
+        }
+        else{
+            setEmailMsg('')
+        }
+
+        if(user.password === ''){
+            setPasswordMsg('password is required')
+            return false
+        }
+        else{
+            setPasswordMsg('')
+        }
+
+        return true
+    }
+
+    return(
+        <div>
+            <h3>Reading input from User: </h3>
+
+            <div>
+                <label>Please enter your name: </label>
+                <input type="text" onChange={(e)=>setName(e.target.value) }/>
+                <span>{nameMsg}</span>
+                <br />
+                <label>Please enter your email: </label>
+                <input type="text" onChange={(e)=>setEmail(e.target.value) }/>
+                <span>{emailMsg}</span>
+                <br />
+                <label>Please enter your Password: </label>
+                <input type="text" onChange={(e)=>setPassword(e.target.value) }/>
+                <span>{passwordMsg}</span>
+                <br />
+                
+                <button onClick={()=>process()}>Sign Up</button>
+            </div>
+        </div>
+    )
+}
+
+export default ReadingInput;
+
+
+
+==============================================================================================================
+
+import { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [name,setName]=useState('');
+  const [username,setUsername]=useState('');
+  const [password,setPassword]=useState('');
+  const [nameMsg,setNameMsg]=useState('');
+  const [usernameMsg,setUsernameMsg]=useState('');
+  const [passwordMsg,setPasswordMsg]=useState('');
+ const validate =() =>{
+  let isValid = true;
+  if(name === ''){
+    isValid = false
+    setNameMsg('Name is required')
+  }
+  if(username === ''){
+    isValid =false
+    setUsernameMsg('username is required')
+  }
+  if(password === ''){
+    isValid = false
+    setPasswordMsg('password is required')
+  }
+  return isValid;
+ }
+  
+  return (
+    <div className="App">
+      <h3>Hello React!!</h3>
+      <hr />
+          <label>Enter name: </label>
+          <input type="text" onKeyUp={(e)=>setName(e.target.value)}></input>
+          <br >
+          <span className="error_msg">{name === ''?nameMsg :''?} </span>
+          </br>
+          <label>Enter Username: </label>
+          <input type="text" onKeyUp={(e)=>setUsername(e.target.value)}></input>
+          <br>
+          <input type="text" onKeyUp={(e)=>setUsername(e.target.value)} ></input>
+          </br>
+          <label>Enter password: </label>
+          <input type="text" onKeyUp={(e)=>setPassword(e.target.value)}></input>
+          <br>
+          <input type="text" onKeyUp={(e)=>setPassword(e.target.value)}></input>
+          </br>
+          <button>Sign Up</button>
+          <br></br>
+          <div>
+            {name}<br/>
+            {username}<br/>
+            {password}
+          </div>
+     </div>
+  );
+}
+
+
+export default App;
+=================================================================================================================================================
+
+  3. creating an array and iterate over it
+
+// Importing the 'useState' hook from the 'react' library
+import { useState } from 'react';
+
+// Importing the CSS file for styling
+import './App.css';
+
+// Functional component named 'App'
+function App() {
+  // Using the 'useState' hook to create a state variable 'arry' with an initial value
+  // The state contains an array of numbers [6,8,5,4,7,3,1,2,9]
+  const [arry,] = useState([6, 8, 5, 4, 7, 3, 1, 2, 9]);
+
+  // JSX code representing the structure of the component
+  return (
+    <div className="App">
+      {/* Displaying a heading */}
+      <h3>Hello React!!!</h3>
+      {/* Adding a horizontal line */}
+      <hr />
+      {
+        // Using the 'map' function to iterate over each element of the 'arry' array
+        // 'e' represents the current element, and 'index' represents its index in the array
+        arry.map((e, index) => (
+          // Using the 'div' element to display each array element
+          // 'key' attribute is set to the index to uniquely identify each element in the list
+          <div key={index}>
+            {e}
+          </div>
+        ))
+      }
+    </div>
+  );
+}
+
+// Exporting the 'App' component as the default export
+export default App;
+
+4.Topic: On click Event
+--------------------------------------------------------------------
+-Display a number with an increment button and increment when button is click
+
+import { useState } from 'react';
+import './App.css';
+
+function App() {
+  // Using the 'useState' hook to create a state variable 'num' with an initial value of 2
+  const [num, setNum] = useState(2);
+
+  // Define the 'increment' function to increase the value of 'num'
+  const increment = () => {
+    let temp = num;
+    setNum(++temp);
+  };
+
+  // Define the 'decrement' function to decrease the value of 'num'
+  const decrement = () => {
+    let temp = num;
+    setNum(--temp);
+  };
+
+  // JSX code representing the structure of the component
+  return (
+    <div className="App">
+      {/* Displaying a heading */}
+      <h3>Hello React!!!</h3>
+      {/* Adding a horizontal line */}
+      <hr />
+      {/* Displaying the current value of 'num' */}
+      {num}
+      <br />
+      {/* Button to trigger the 'increment' function */}
+      <button onClick={() => increment()}>Increment</button>
+      {/* Button to trigger the 'decrement' function */}
+      <button onClick={() => decrement()}>Decrement</button>
+    </div>
+  );
+}
+
+// Exporting the 'App' component as the default export
+export default App;
+
+
+import {navbar} from "bootstrap";
+function Navbar(){
+    return(
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+        </div>
+    )
+}
+export default Navbar;
+
+
+
+
+
+
+
+
