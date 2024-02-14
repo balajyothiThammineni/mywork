@@ -1,37 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import SNavbar from "./navbar";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const navigate = useNavigate();
 
   const [productData, setProductData] = useState({
-    colour: '',
+    colour: "",
     featured: false,
-    image: '',
-    name: '',
-    price: 0,
-    productDescription: '',
-    size: '',
+    image: "",
+    name: "",
+    price: "",
+    productDescription: "",
+    size: "",
     stock: 0,
-    cid: 0,
-    sid: localStorage.getItem('sid'),
+    cid: "",
+    sid: localStorage.getItem("sid"),
   });
+
+  const regexAlpha = /^[a-zA-Z]+$/;
+  const regexURL = /^(ftp|http|https):\/\/[^ "]+$/;
+  const regexNumber = /^[0-9]+$/;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setProductData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+
+    // Use regex to validate input based on field name
+    let isValidInput = true;
+    switch (name) {
+      case "colour":
+      case "name":
+        isValidInput = regexAlpha.test(value);
+        break;
+      case "image":
+        isValidInput = regexURL.test(value);
+        break;
+      case "price":
+      case "cid":
+        isValidInput = regexNumber.test(value);
+        break;
+      default:
+        break;
+    }
+
+    // Update state only if the input is valid
+    if (isValidInput) {
+      setProductData((prevData) => ({
+        ...prevData,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Add logic to send the productData to your backend for processing
-    console.log('Product data submitted:', productData);
+    console.log("Product data submitted:", productData);
     try {
       // Make a POST request to your endpoint
       const response = await axios.post(
@@ -40,12 +66,11 @@ const AddProduct = () => {
       );
 
       // Handle the response as needed
-      alert('Product added successfully');
-      navigate('/seller/myproducts')
-
+      alert("Product added successfully");
+      navigate("/seller/myproducts");
     } catch (error) {
       // Handle errors
-      console.error('Error adding product:', error);
+      console.error("Error adding product:", error);
     }
   };
 
@@ -59,7 +84,9 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit}>
               <div className="row mb-3">
                 <div className="col-md-6">
-                  <label htmlFor="name" className="form-label">Product Name</label>
+                  <label htmlFor="name" className="form-label">
+                    Product Name
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -71,7 +98,9 @@ const AddProduct = () => {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="colour" className="form-label">Colour</label>
+                  <label htmlFor="colour" className="form-label">
+                    Colour
+                  </label>
                   <input
                     type="text"
                     id="colour"
@@ -92,11 +121,15 @@ const AddProduct = () => {
                   onChange={handleChange}
                   className="form-check-input"
                 />
-                <label htmlFor="featured" className="form-check-label">Featured</label>
+                <label htmlFor="featured" className="form-check-label">
+                  Featured
+                </label>
               </div>
 
               <div className="mb-3">
-                <label htmlFor="img" className="form-label">Image URL</label>
+                <label htmlFor="img" className="form-label">
+                  Image URL
+                </label>
                 <input
                   type="text"
                   id="img"
@@ -109,7 +142,9 @@ const AddProduct = () => {
 
               <div className="row mb-3">
                 <div className="col-md-6">
-                  <label htmlFor="price" className="form-label">Price</label>
+                  <label htmlFor="price" className="form-label">
+                    Price
+                  </label>
                   <input
                     type="number"
                     id="price"
@@ -121,7 +156,9 @@ const AddProduct = () => {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="stock" className="form-label">Stock</label>
+                  <label htmlFor="stock" className="form-label">
+                    Stock
+                  </label>
                   <input
                     type="number"
                     id="stock"
@@ -135,7 +172,9 @@ const AddProduct = () => {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="product_description" className="form-label">Product Description</label>
+                <label htmlFor="product_description" className="form-label">
+                  Product Description
+                </label>
                 <textarea
                   id="product_description"
                   name="productDescription"
@@ -146,7 +185,9 @@ const AddProduct = () => {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="size" className="form-label">Size</label>
+                <label htmlFor="size" className="form-label">
+                  Size
+                </label>
                 <input
                   type="text"
                   id="size"
@@ -158,7 +199,9 @@ const AddProduct = () => {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="category_category_id" className="form-label">Category ID</label>
+                <label htmlFor="category_category_id" className="form-label">
+                  Category ID
+                </label>
                 <input
                   type="number"
                   id="category_category_id"
@@ -170,7 +213,9 @@ const AddProduct = () => {
               </div>
 
               <div className="mb-3">
-                <button type="submit" className="btn btn-primary">Add Product</button>
+                <button type="submit" className="btn btn-primary">
+                  Add Product
+                </button>
               </div>
             </form>
           </div>
